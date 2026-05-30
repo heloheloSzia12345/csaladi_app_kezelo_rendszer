@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: csaladi_app_kezelo_rendszer
+  datasource:
+    url: jdbc:postgresql://localhost:5432/csaladi_app_kezelo_rendszer
+    username: postgres
+    password: postgres
+jpa:
+  hibernate:
+    ddl-auto: update
+  show-sql: true
+  properties:
+    hibernate:
+      format_sql: true
