@@ -1,11 +1,7 @@
 package org.example.csaladi_app_kezelo_rendszer.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -13,14 +9,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="IconTable")
-public class IconEntity {
-    @Id
-    private String iconId = UUID.randomUUID().toString();
-
-    @NotBlank
-    @Size(min=5,max=30)
-    private String name;
-
+public class IconEntity  extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "menu_id")
     private MenuEntity menu;

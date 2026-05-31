@@ -1,13 +1,9 @@
 package org.example.csaladi_app_kezelo_rendszer.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -15,14 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="UserTable")
-public class UserEntity {
-    @Id
-    private String id = UUID.randomUUID().toString();
-
-    @NotBlank(message="Give a name!")
-    @Size(min=5, max=50)
-    private String name;
-
+public class UserEntity  extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "theme_id")
     @OnDelete(action = OnDeleteAction.SET_NULL)

@@ -1,12 +1,8 @@
 package org.example.csaladi_app_kezelo_rendszer.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -14,14 +10,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="MenuTable")
-public class MenuEntity {
-    @Id
-    private String menuId = UUID.randomUUID().toString();
-
-    @NotBlank
-    @Size(min=5,max=30)
-    private String name;
-
+public class MenuEntity  extends BaseEntity{
     @OneToOne(mappedBy = "menu")
     private UserEntity user;
 
