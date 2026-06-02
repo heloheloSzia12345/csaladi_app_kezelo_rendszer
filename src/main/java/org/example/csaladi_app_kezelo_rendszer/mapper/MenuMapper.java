@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
+
 import java.util.List;
 
 @Mapper(componentModel = "spring")
@@ -21,12 +22,12 @@ public interface MenuMapper {
 
     @Mapping(source = "userId", target = "user.id")
     @Mapping(target = "icons", ignore = true)
+    @Mapping(target = "id", ignore = true)
     void updateEntityFromDto(MenuDto menuDto, @MappingTarget MenuEntity menuEntity);
 
     @Named("iconsToIconsId")
-    default List<String> iconsToIconsId(List<IconEntity> icons)
-    {
-        if(icons==null) return null;
+    default List<String> iconsToIconsId(List<IconEntity> icons) {
+        if (icons == null) return null;
         return icons.stream().map(IconEntity::getId).toList();
     }
 }

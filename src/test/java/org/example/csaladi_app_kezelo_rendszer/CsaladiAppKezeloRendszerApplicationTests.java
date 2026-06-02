@@ -8,6 +8,7 @@ class CsaladiAppKezeloRendszerApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

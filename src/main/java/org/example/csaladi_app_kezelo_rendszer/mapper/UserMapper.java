@@ -8,18 +8,19 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-    @Mapping(source = "theme.id", target="themeId")
-    @Mapping(source = "background.id", target="backgroundId")
-    @Mapping(source = "menu.id", target="menuId")
+    @Mapping(source = "theme.id", target = "themeId")
+    @Mapping(source = "background.id", target = "backgroundId")
+    @Mapping(source = "menu.id", target = "menuId")
     UserDto toDto(UserEntity userEntity);
 
-    @Mapping(source = "themeId", target="theme.id")
-    @Mapping(source = "backgroundId", target="background.id")
-    @Mapping(source = "menuId", target="menu.id")
+    @Mapping(source = "themeId", target = "theme.id")
+    @Mapping(source = "backgroundId", target = "background.id")
+    @Mapping(source = "menuId", target = "menu.id")
     UserEntity toEntity(UserDto userDto);
 
-    @Mapping(source = "themeId", target="theme.id")
-    @Mapping(source = "backgroundId", target="background.id")
-    @Mapping(source = "menuId", target="menu.id")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(source = "themeId", target = "theme.id")
+    @Mapping(source = "backgroundId", target = "background.id")
+    @Mapping(source = "menuId", target = "menu.id")
     void updateEntityFromDto(UserDto userDto, @MappingTarget UserEntity userEntity);
 }

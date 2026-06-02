@@ -19,12 +19,12 @@ public interface ThemeMapper {
     ThemeEntity toEntity(ThemeDto themeDto);
 
     @Mapping(target = "users", ignore = true)
+    @Mapping(target = "id", ignore = true)
     void updateEntityFromDto(ThemeDto themeDto, @MappingTarget ThemeEntity themeEntity);
 
     @Named("usersToUsersId")
-    default List<String> usersToUsersId(List<UserEntity> users)
-    {
-        if(users==null) return null;
+    default List<String> usersToUsersId(List<UserEntity> users) {
+        if (users == null) return null;
         return users.stream().map(UserEntity::getId).toList();
     }
 }

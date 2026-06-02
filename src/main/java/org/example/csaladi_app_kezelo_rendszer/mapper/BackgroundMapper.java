@@ -19,12 +19,12 @@ public interface BackgroundMapper {
     BackgroundEntity toEntity(BackgroundDto backgroundDto);
 
     @Mapping(target = "users", ignore = true)
+    @Mapping(target = "id", ignore = true)
     void updateEntityFromDto(BackgroundDto backgroundDto, @MappingTarget BackgroundEntity backgroundEntity);
 
     @Named("usersToUsersId")
-    default List<String> usersToUsersId(List<UserEntity> users)
-    {
-        if(users==null) return null;
+    default List<String> usersToUsersId(List<UserEntity> users) {
+        if (users == null) return null;
         return users.stream().map(UserEntity::getId).toList();
     }
 }

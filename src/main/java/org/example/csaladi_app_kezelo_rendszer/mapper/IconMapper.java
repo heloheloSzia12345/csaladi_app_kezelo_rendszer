@@ -18,5 +18,6 @@ public interface IconMapper {
 
     @Mapping(source = "menuId", target = "menu.id")
     @Mapping(source = "applicationId", target = "application.id")
+    @Mapping(target = "id", ignore = true)
     void updateEntityFromDto(IconDto iconDto, @MappingTarget IconEntity iconEntity);
 }
