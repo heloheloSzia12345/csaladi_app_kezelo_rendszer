@@ -68,25 +68,25 @@ public class UserService {
 
         if (userProfile.getThemeId() != null) {
             theme = themeRepository.findById(userProfile.getThemeId()).orElseThrow(() -> new EntityNotFoundException("Theme not found!"));
+            userToModify.setTheme(theme);
         } else {
             theme = null;
         }
 
         if (userProfile.getBackgroundId() != null) {
             background = backgroundRepository.findById(userProfile.getBackgroundId()).orElseThrow(() -> new EntityNotFoundException("Background not found!"));
+            userToModify.setBackground(background);
         } else {
             background = null;
         }
 
         if (userProfile.getMenuId() != null) {
             menu = menuRepository.findById(userProfile.getMenuId()).orElseThrow(() -> new EntityNotFoundException("Menu not found!"));
+            userToModify.setMenu(menu);
         } else {
             menu = MenuEntity.builder().name("Menu of " + userProfile.getName()).build();
         }
         userToModify.setName(userProfile.getName());
-        userToModify.setTheme(theme);
-        userToModify.setBackground(background);
-        userToModify.setMenu(menu);
         UserEntity returnEntity = userRepository.save(userToModify);
         return userMapper.toDto(returnEntity);
     }
